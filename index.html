@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Page Navigation</title>
+    <style>
+        .page {
+            display: none;
+        }
+        .active-page {
+            display: block;
+        }
+        body {
+      text-align: center;
+    }
+    .list-container {
+      text-align: center;
+      display: inline-block;
+    }
+    </style>
+</head>
+<body> 
+<h1 style="text-decoration: underline; color:skyblue;">JAVASCRIPT TASK-2</h1>
+
+  <div class="list-container">
+    <h1>Multi-Page Navigation</h1>
+    <p>Current Page: <span id="currentPage">1</span></p>
+    <div class="page active-page" id="page1">
+        <h2>Page 1</h2>
+        <p>This is the content of page 1.</p>
+        <a href="#" onclick="goToNextPage()">Next Page</a>
+        <button onclick="goToNextPage()">Go to Next Page</button>
+    </div>
+    <div class="page" id="page2">
+        <h2>Page 2</h2>
+        <p>This is the content of page 2.</p>
+        <a href="#" onclick="goToNextPage()">Next Page</a>
+        <button onclick="goToNextPage()">Go to Next Page</button>
+    </div>
+    <div class="page" id="page3">
+        <h2>Page 3</h2>
+        <p>This is the content of page 3.</p>
+        <p>This is the last page.</p>
+    </div>
+
+    <script>
+        var currentPage = 1;
+        var totalPages = 3;
+
+        function goToNextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePage();
+            }
+        }
+
+        function updatePage() {
+            document.getElementById("currentPage").textContent = currentPage;
+            for (var i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    document.getElementById("page" + i).classList.add("active-page");
+                } else {
+                    document.getElementById("page" + i).classList.remove("active-page");
+                }
+            }
+        }
+    </script>
+    </div>
+</body>
+</html>
